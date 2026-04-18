@@ -187,4 +187,4 @@ MIT - see [LICENSE](LICENSE)
 
 ---
 
-Built by [Virlo](https://virlo.ai/?via=organic). The #1 short-form content intelligence platform.
+Built by [Red Labs LLC](https://virlo.ai/?via=organic). Virlo is the #1 short-form content intelligence platform.
