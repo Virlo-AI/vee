@@ -1,8 +1,8 @@
 # Vee
 
-a full-stack marketing intelligence and content agent. powered by [Virlo](https://virlo.ai/?via=organic).
+A full-stack marketing intelligence and content agent. Powered by [Virlo](https://virlo.ai/?via=organic).
 
-vee doesn't guess what to post. he researches your entire niche, finds what's already working, creates content based on that intelligence, posts it to 9 platforms, tracks performance, and optimizes - all from one conversation.
+Vee doesn't guess what to post. He researches your entire niche, finds what's already working, creates content based on that intelligence, posts it to 9 platforms, tracks performance, and optimizes - all from one conversation.
 
 ```
 RESEARCH  →  ANALYZE  →  CREATE  →  POST  →  TRACK  →  OPTIMIZE
@@ -11,63 +11,63 @@ RESEARCH  →  ANALYZE  →  CREATE  →  POST  →  TRACK  →  OPTIMIZE
                         Copy Genie
 ```
 
-## what vee does
+## What Vee Does
 
-**research** - search millions of indexed videos across TikTok, Instagram Reels, YouTube Shorts, and Meta Ads. set up persistent niche monitors that run on autopilot. look up any creator's full analytics. find what's trending before everyone else does.
+**Research** - Search millions of indexed videos across TikTok, Instagram Reels, YouTube Shorts, and Meta Ads. Set up persistent niche monitors that run on autopilot. Look up any creator's full analytics. Find what's trending before everyone else does.
 
-**analyze** - extract hook patterns, identify outlier content, benchmark competitors, classify what formats are working and why. not vibes - data.
+**Analyze** - Extract hook patterns, identify outlier content, benchmark competitors, classify what formats are working and why. Not vibes - data.
 
-**create** - generate any marketing deliverable informed by real performance data:
-- short-form video scripts, slideshows, hook variations, UGC scripts
-- linkedin posts, x/twitter threads, instagram captions, reddit posts
-- meta/google/tiktok/linkedin ad copy, landing pages, sales pages
-- cold email sequences, welcome flows, nurture campaigns, DM sequences
-- blog posts, newsletters, case studies, lead magnets, webinar scripts
-- creative briefs, UGC briefs, content calendars, SEO briefs
-- competitive reports, performance reports, trend analysis
-- product descriptions, app store copy, FAQ content
+**Create** - Generate any marketing deliverable informed by real performance data:
+- Short-form video scripts, slideshows, hook variations, UGC scripts
+- LinkedIn posts, X/Twitter threads, Instagram captions, Reddit posts
+- Meta/Google/TikTok/LinkedIn ad copy, landing pages, sales pages
+- Cold email sequences, welcome flows, nurture campaigns, DM sequences
+- Blog posts, newsletters, case studies, lead magnets, webinar scripts
+- Creative briefs, UGC briefs, content calendars, SEO briefs
+- Competitive reports, performance reports, trend analysis
+- Product descriptions, app store copy, FAQ content
 
-**post** - publish to TikTok, Instagram, Facebook, X, LinkedIn, YouTube, Threads, Pinterest, and Bluesky. schedule posts, save drafts, or publish instantly.
+**Post** - Publish to TikTok, Instagram, Facebook, X, LinkedIn, YouTube, Threads, Pinterest, and Bluesky. Schedule posts, save drafts, or publish instantly.
 
-**track** - monitor your content and competitors over time with daily AI-generated reports, metric snapshots, and posting cadence analysis.
+**Track** - Monitor your content and competitors over time with daily AI-generated reports, metric snapshots, and posting cadence analysis.
 
-**optimize** - morning diagnostics, 2x2 performance matrix, niche-level comparison against market outliers, trend-based recommendations, auto-generate new variations from winners.
+**Optimize** - Morning diagnostics, 2x2 performance matrix, niche-level comparison against market outliers, trend-based recommendations, auto-generate new variations from winners.
 
-## quick start
+## Quick Start
 
-### 1. get your API keys
+### 1. Get Your API Keys
 
-- **Virlo** - [sign up](https://virlo.ai/?via=organic) and get your API key at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
-- **PostForMe** - [sign up](https://postforme.dev) for multi-platform posting
-- **Image gen** - pick one: OpenAI (DALL-E 3), Stability AI, Replicate (Flux), or Google Gemini
+- **Virlo** - [Sign up](https://virlo.ai/?via=organic) and get your API key at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
+- **PostForMe** - [Sign up](https://postforme.dev) for multi-platform posting
+- **Image gen** - Pick one: OpenAI (DALL-E 3), Stability AI, Replicate (Flux), or Google Gemini
 
-### 2. install
+### 2. Install
 
 ```bash
-git clone https://github.com/virlo/vee.git
+git clone https://github.com/Virlo-AI/vee.git
 cd vee
 npm install
 ```
 
-### 3. configure
+### 3. Configure
 
 ```bash
 node scripts/setup.js
 ```
 
-the setup wizard walks you through connecting all your APIs and choosing which platforms to post to.
+The setup wizard walks you through connecting all your APIs and choosing which platforms to post to.
 
-### 4. add the skill
+### 4. Add the Skill
 
-copy `SKILL.md` to your Claude Code skills directory:
+Copy `SKILL.md` to your Claude Code skills directory:
 
 ```bash
 cp SKILL.md ~/.claude/skills/vee/SKILL.md
 ```
 
-### 5. (recommended) add Virlo MCP server
+### 5. (Recommended) Add Virlo MCP Server
 
-add to your `.mcp.json`:
+Add to your `.mcp.json`:
 
 ```json
 {
@@ -83,15 +83,15 @@ add to your `.mcp.json`:
 }
 ```
 
-this gives vee direct access to Virlo's 20+ MCP tools for research, tracking, and analysis.
+This gives Vee direct access to Virlo's 20+ MCP tools for research, tracking, and analysis.
 
-### 6. go
+### 6. Go
 
 ```
 "hey vee, research the fitness niche and draft 5 TikTok scripts based on what's trending"
 ```
 
-## what you can ask vee
+## What You Can Ask Vee
 
 ```
 "find me viral UGC videos for consumer apps that took off in the last 14 days"
@@ -107,32 +107,32 @@ this gives vee direct access to Virlo's 20+ MCP tools for research, tracking, an
 "give me my morning report"
 ```
 
-## how it works
+## How It Works
 
-vee connects three services:
+Vee connects three services:
 
-| Service | Role | What it provides |
+| Service | Role | What It Provides |
 |---------|------|-----------------|
 | [Virlo API](https://dev.virlo.ai/docs/?via=organic) | Intelligence layer | Niche research, creator tracking, video analysis, trend detection, outlier identification across TikTok, Reels, Shorts, and Meta Ads |
 | [PostForMe API](https://postforme.dev) | Posting layer | Multi-platform publishing (9 platforms), scheduling, per-post analytics |
-| Image gen API | Visual layer | AI image generation for slideshows (OpenAI, Stability, Replicate, or Gemini) |
+| Image Gen API | Visual layer | AI image generation for slideshows (OpenAI, Stability, Replicate, or Gemini) |
 
-## repo structure
+## Repo Structure
 
 ```
 vee/
-├── SKILL.md                      # the skill definition (install this)
+├── SKILL.md                      # The skill definition (install this)
 ├── scripts/
-│   ├── setup.js                  # onboarding wizard
+│   ├── setup.js                  # Onboarding wizard
 │   ├── generate-slides.js        # AI image generation (4 providers)
 │   ├── add-text-overlay.js       # node-canvas text overlays
 │   ├── post-content.js           # PostForMe - post to 9 platforms
 │   ├── check-analytics.js        # PostForMe - pull metrics
-│   └── daily-report.js           # morning diagnostic
-├── copy-genie/                   # copywriting intelligence
+│   └── daily-report.js           # Morning diagnostic
+├── copy-genie/                   # Copywriting intelligence
 │   ├── hex-stack.md              # SPARKS framework
 │   └── common-frameworks.md      # PAS, AIDA, 4Ps, and more
-├── content-templates/            # templates for every deliverable
+├── content-templates/            # Templates for every deliverable
 │   ├── short-form-video.md
 │   ├── social-posts.md
 │   ├── ads-landing-pages.md
@@ -141,15 +141,15 @@ vee/
 │   ├── strategy-briefs.md
 │   ├── reports-intelligence.md
 │   └── product-ecom-copy.md
-├── references/                   # quick reference guides
-├── examples/                     # walkthrough demos
+├── references/                   # Quick reference guides
+├── examples/                     # Walkthrough demos
 └── config/
     └── vee-config.example.json
 ```
 
-## Virlo API costs
+## Virlo API Costs
 
-vee is transparent about costs. he tells you before every paid operation.
+Vee is transparent about costs. He tells you before every paid operation.
 
 | Operation | Cost |
 |-----------|------|
@@ -163,28 +163,28 @@ vee is transparent about costs. he tells you before every paid operation.
 | Hashtag search | $0.05 |
 | Balance check, reading results | Free |
 
-full API docs at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
+Full API docs at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
 
-## examples
+## Examples
 
-check the `examples/` folder for full walkthroughs:
-- **slideshow-campaign.md** - research → generate → post → track → optimize
-- **multi-format-campaign.md** - one research session → scripts + posts + ads + briefs
-- **client-report.md** - social intelligence report as a sales tool
-- **competitor-tracking.md** - persistent competitor monitoring setup
+Check the `examples/` folder for full walkthroughs:
+- **slideshow-campaign.md** - Research → generate → post → track → optimize
+- **multi-format-campaign.md** - One research session → scripts + posts + ads + briefs
+- **client-report.md** - Social intelligence report as a sales tool
+- **competitor-tracking.md** - Persistent competitor monitoring setup
 
-## who this is for
+## Who This Is For
 
-- **agencies** managing multiple brand clients who need scalable content intelligence
-- **ecom/DTC brands** fighting creative fatigue and looking for data-backed content direction
-- **growth teams** who need to prove ROI on short-form video investment
+- **Agencies** managing multiple brand clients who need scalable content intelligence
+- **Ecom/DTC brands** fighting creative fatigue and looking for data-backed content direction
+- **Growth teams** who need to prove ROI on short-form video investment
 - **UGC operators** who need signal-to-creative pipelines at speed
-- **solo operators** who want enterprise-level market intelligence without a team
+- **Solo operators** who want enterprise-level market intelligence without a team
 
-## license
+## License
 
 MIT - see [LICENSE](LICENSE)
 
 ---
 
-built by [Virlo](https://virlo.ai/?via=organic). the #1 short-form content intelligence platform.
+Built by [Virlo](https://virlo.ai/?via=organic). The #1 short-form content intelligence platform.
