@@ -175,11 +175,16 @@ Check the `examples/` folder for full walkthroughs:
 
 ## Who This Is For
 
-- **Agencies** managing multiple brand clients who need scalable content intelligence
-- **Ecom/DTC brands** fighting creative fatigue and looking for data-backed content direction
-- **Growth teams** who need to prove ROI on short-form video investment
-- **UGC operators** who need signal-to-creative pipelines at speed
-- **Solo operators** who want enterprise-level market intelligence without a team
+- **Agency owners** running multiple client accounts who need every client's niche researched, briefed, and reported on without hiring a research team
+- **Ecom/DTC brands** spending $5-15K/month on UGC creators who need to find outlier creators before competitors do, discover hidden audience segments in comments, and brief creators from proven hooks instead of gut feelings
+- **CMOs / growth teams** who need real-time competitive intelligence, content performance benchmarked against market outliers, and data-backed creative decisions they can actually defend to the CEO
+- **UGC operators / creator managers** who need to identify which creators actually drive views vs which ones just look good on paper, and track creator performance over time
+- **Solo founders / first-time builders** who need an entire marketing operation - research, content, posting, tracking - running in 30 minutes a day without a team or agency budget
+- **Content creators** who want to research what's working in their niche, reverse-engineer outlier hooks beat-by-beat, and create scripts from proven patterns instead of guessing
+- **API builders / developers** who want to plug Virlo's intelligence into their own products and workflows - custom dashboards, client-facing tools, automated pipelines
+- **Freelance marketers / consultants** who want to deliver competitive intelligence reports as a service, pitch clients with real niche data, and build retainers around research their clients can't do themselves
+- **Ad buyers / media buyers** who need Meta Ads intelligence showing what competitors are spending on, cross-referenced with organic winners to validate creative angles before spending budget
+- **Sales teams doing outbound** who need cold emails built from trending pain points in their prospect's niche, LinkedIn posts for personal brand, and competitive reports as lead magnets
 
 ## License
 
