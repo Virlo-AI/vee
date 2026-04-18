@@ -1,0 +1,31 @@
+{
+  "name": "vee",
+  "version": "1.0.0",
+  "description": "Full-stack marketing intelligence and content agent powered by Virlo",
+  "main": "scripts/setup.js",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "generate-slides": "node scripts/generate-slides.js",
+    "overlay": "node scripts/add-text-overlay.js",
+    "post": "node scripts/post-content.js",
+    "analytics": "node scripts/check-analytics.js",
+    "report": "node scripts/daily-report.js"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  },
+  "keywords": [
+    "virlo",
+    "marketing",
+    "content-agent",
+    "social-media",
+    "tiktok",
+    "reels",
+    "shorts",
+    "intelligence"
+  ],
+  "author": "Virlo (https://virlo.ai/?via=organic)",
+  "license": "MIT"
+}

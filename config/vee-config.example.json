@@ -1,0 +1,33 @@
+{
+  "virlo": {
+    "api_key": "YOUR_VIRLO_API_KEY",
+    "mcp_url": "https://dev.virlo.ai/api/mcp/mcp",
+    "docs": "https://dev.virlo.ai/docs/?via=organic"
+  },
+  "postforme": {
+    "api_key": "YOUR_POSTFORME_API_KEY",
+    "base_url": "https://api.postforme.dev"
+  },
+  "image_gen": {
+    "provider": "openai",
+    "api_key": "YOUR_IMAGE_GEN_API_KEY",
+    "model": "dall-e-3"
+  },
+  "platforms": {
+    "tiktok": true,
+    "instagram": true,
+    "youtube": true,
+    "x": false,
+    "linkedin": false,
+    "facebook": false,
+    "threads": false,
+    "pinterest": false,
+    "bluesky": false
+  },
+  "defaults": {
+    "niche_keywords": [],
+    "posting_schedule": "optimal",
+    "slide_count": 6,
+    "output_dir": "./output"
+  }
+}
