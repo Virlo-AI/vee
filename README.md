@@ -43,9 +43,9 @@ install Vee for me from https://github.com/Virlo-AI/vee
 
 Your agent clones the repo, installs dependencies, registers Vee as a Claude Code skill, wires up the Virlo MCP server, and walks you through API key signups. The whole thing takes ~3 minutes. The only required key is Virlo - PostForMe and image gen are optional and can be added later.
 
-When the installer prompts you to sign up, it gives you direct links to the developer dashboards (no front-end onboarding tutorials, no forced trials):
+The signup links the installer points you to:
 
-- Virlo (required): [dev.virlo.ai/signup/?via=organic](https://dev.virlo.ai/signup/?via=organic) - $5 minimum credit to use the API
+- Virlo (required): [dev.virlo.ai/signup/?via=organic](https://dev.virlo.ai/signup/?via=organic)
 - PostForMe (optional, only if you want Vee to post): [postforme.dev/developers](https://www.postforme.dev/developers)
 - Image gen (optional, only if you want Vee to generate slides): pick one - OpenAI, Stability, Replicate, or Gemini
 

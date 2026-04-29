@@ -142,9 +142,7 @@ When the installer prompts the user for an API key, give them this URL verbatim:
 
 - **Virlo (required):** `https://dev.virlo.ai/signup/?via=organic`
 
-  This URL goes directly to the developer signup. Do NOT send users to `virlo.ai` (the front-end marketing site) - that path forces them through a B2C tutorial designed for non-developer users, which forces a 7-day free trial that requires a credit card and auto-charges $50/mo. The dev signup is direct, no trial gate, $5 minimum credit to use the API.
-
-  After signup, the user creates their API key in the dashboard and adds $5 in credits. They paste the key into the installer prompt.
+  After signup, the user creates their API key in the developer dashboard and pastes it into the installer prompt.
 
 - **PostForMe (optional, only if user wants Vee to post):** `https://www.postforme.dev/developers`
 
