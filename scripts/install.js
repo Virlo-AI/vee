@@ -30,14 +30,23 @@ const log = (...args) => console.log(...args);
 
 async function checkVirloKey(apiKey) {
   const fetch = (await import('node-fetch')).default;
-  const res = await fetch('https://dev.virlo.ai/api/credits/balance', {
-    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+  // Validate against the MCP endpoint - that's what the skill actually uses.
+  // tools/list is a free, instant call that requires only valid auth.
+  const res = await fetch('https://dev.virlo.ai/api/mcp/mcp', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json, text/event-stream',
+    },
+    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/list' }),
   });
   if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`status ${res.status}: ${body}`);
+    const body = await res.text().catch(() => '');
+    throw new Error(`status ${res.status}: ${body.slice(0, 200)}`);
   }
-  return res.json();
+  // Streamed responses (text/event-stream) may need a small read; we just need a 200.
+  return { ok: true };
 }
 
 function ensureNodeInstall() {
