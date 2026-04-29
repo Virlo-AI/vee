@@ -61,13 +61,17 @@ npm run install-vee
 
 Paste your Virlo key when prompted. The installer handles the rest. You can re-run `npm run install-vee` any time to update keys.
 
-### Talk to Vee
+### After install: your first Content Agent
 
-Once installed, open Claude Code and say:
+Once the installer finishes, Vee walks you through setting up your first Content Agent (a personal content radar that monitors a topic 24/7 and surfaces viral videos, trending hooks, and outlier creators in that space). This takes about 60 seconds and is the foundation for everything Vee does after.
 
-```
-"hey vee, research the fitness niche and draft 5 TikTok scripts based on what's trending"
-```
+Vee asks you three things:
+
+1. **Topic** - what do you want to track? (e.g. "personal brand," "supplement ecom," "AI tools," "indie games")
+2. **Keywords** - Vee generates 10 candidates based on your topic; you confirm or edit them
+3. **Configuration** - sensible defaults (TikTok + Reels + Shorts, weekly refresh, monthly time range); confirm or tighten
+
+After that, your first Content Agent is live. Vee then introduces himself and gives you four moves you can make right now to start working.
 
 ## What You Can Ask Vee
 
