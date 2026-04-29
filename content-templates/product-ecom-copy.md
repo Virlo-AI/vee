@@ -280,5 +280,4 @@ Free trial. No friction. "Start for $0 - 7-day free trial, no card required." Ne
 - [ ] Do testimonials have specific results - not just praise?
 - [ ] Does the comparison page include accurate competitor information - not wishful thinking?
 - [ ] Is the SPARKS S layer (Sting the Skin) present in the problem framing? Is it specific or cinematic - not just general?
-- [ ] Are any deprecated features mentioned? (If so: remove. No Global Niches, Media Generation, or Collections.)
-- [ ] Is "start for free" / "start for $0" used instead of "sign up" or "subscribe"?
+- [ ] Is "start for free" used as the trial CTA?

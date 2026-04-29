@@ -12,16 +12,14 @@ Reports without data are opinion documents. Opinion documents are not worth gati
 
 | Report type | Minimum Virlo data pull |
 |---|---|
-| Social intelligence report | Orbit keyword search ($0.50) OR niche monitor data (free if existing) |
-| Weekly/monthly performance | PostForMe analytics (free via scripts) + niche monitor for benchmark data |
-| Competitive landscape | Creator lookup ($0.50 per account) for each tracked competitor |
-| Trend report | Trend digest ($0.25) + hashtag search ($0.05 per tag) |
-| Content audit | Tracked creator post list (free) + niche monitor benchmark data |
-| Prospect report | Orbit search ($0.50) + creator lookup ($0.50) for prospect's account |
+| Social intelligence report | Orbit keyword search OR niche monitor data |
+| Weekly/monthly performance | PostForMe analytics + niche monitor for benchmark data |
+| Competitive landscape | Creator lookup for each tracked competitor |
+| Trend report | Trend digest + hashtag search per tag |
+| Content audit | Tracked creator post list + niche monitor benchmark data |
+| Prospect report | Orbit search + creator lookup for the prospect's account |
 
-Check Virlo balance before starting any paid research. State costs before running. Never silently spend credits.
-
-If an existing niche monitor has fresh data (pulled within 7 days), use that first. Free data before paid data.
+If an existing niche monitor has fresh data (pulled within 7 days), use that first.
 
 ---
 
@@ -197,7 +195,7 @@ For each winner: one sentence on what specifically made it work. This becomes th
 
 **Use when:** A user wants to understand a specific competitor or the competitive field before a campaign or client pitch.
 
-**Required data pull:** Creator lookup ($0.50 per account) for each competitor. Pull up to 5 accounts.
+**Required data pull:** Creator lookup for each competitor. Pull up to 5 accounts.
 
 **One-page snapshot per competitor:**
 
@@ -244,9 +242,9 @@ Report date: [date]
 **Use when:** A user wants to know what's happening in a niche or platform right now and what to act on this week.
 
 **Data pull sequence:**
-1. `get_trends_digest` ($0.25) - today's curated overview
-2. `search_hashtags` ($0.05 each) for the top 3-5 tags in the niche
-3. Existing niche monitor data (free) for niche-specific patterns
+1. `get_trends_digest` - today's curated overview
+2. `search_hashtags` for the top 3-5 tags in the niche
+3. Existing niche monitor data for niche-specific patterns
 
 **Structure:**
 
@@ -384,6 +382,5 @@ Send with a short voice note or Loom video walking through the findings. Reports
 - [ ] Are the recommendations specific enough that the reader knows what to do tomorrow?
 - [ ] Are all Virlo links appended with `/?via=organic`?
 - [ ] Is "Virality Score" used correctly - as a measure of performance relative to the creator's own baseline, not an absolute number?
-- [ ] Is no deprecated feature mentioned? (no Global Niches, no Media Generation, no Collections)
 - [ ] For prospect reports: does the final page have a specific CTA with the demo booking link?
 - [ ] Would the reader learn something they couldn't have found by spending an hour on TikTok manually? If not, the report isn't specific enough.

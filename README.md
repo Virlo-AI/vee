@@ -129,27 +129,9 @@ vee/
     └── vee-config.example.json
 ```
 
-## Virlo API Costs
+## API Reference
 
-Vee is transparent about costs. He tells you before every paid operation.
-
-| Operation | Cost |
-|-----------|------|
-| Keyword search (Orbit) | $0.50 |
-| Niche monitor creation | $0.50 |
-| Creator lookup | $0.50 |
-| Video analysis | $0.50 |
-| Trending videos | $0.25 |
-| Trends (`get_trends`) | $0.25 |
-| Trend digest | $0.25 |
-| Creator/video tracking | $0.25/cycle |
-| Hashtag search | $0.05 |
-| Hashtag performance | $0.05 |
-| Sound search / details / trending / videos / history / per-creator | $0.05 each |
-| Manage niche monitor (update/deactivate) | Free |
-| Balance check, list tracked items, reading results | Free |
-
-Full API docs at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
+Full Virlo API docs at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic).
 
 ## Examples
 

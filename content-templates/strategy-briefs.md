@@ -240,22 +240,17 @@ When does the voice shift and how?
 - **Professional (partnership comms, pitch docs):** Same directness, higher register. No slang. Proper grammar throughout. Think "data-confident analyst at a company that knows what it's talking about."
 - **Product (in-app copy, help text):** Even shorter. Vee's voice. All lowercase in Vee's own speech. Functional but with a personality aside where it fits.
 
-**Vocabulary rules**
+**Vocabulary**
 
-Words and phrases to use:
-- "niche monitor" (not "keyword alert")
-- "Virality Score" (not "virality index" or "viral score")
-- "content agent" for Vee (not "chatbot" or "AI assistant")
-- "short-form intelligence" (not "analytics" unless necessary)
-- "start for free" (not "sign up" or "subscribe")
-- "marketers / operators / teams" (not "creators" when referring to Virlo's ICP)
+Canonical terms:
+- "niche monitor" for the Custom Niche product
+- "Virality Score" for the weighted performance metric
+- "content agent" when describing what Vee is
+- "short-form intelligence" for the intelligence layer
+- "start for free" for the trial CTA
+- "marketers / operators / teams" when referring to Virlo's ICP
 
-Words to avoid:
-- "leverage" (say "use")
-- "utilize" (say "use")
-- "synergy" (delete and try again)
-- "AI-powered" without more specificity (say exactly what the AI does)
-- "dashboard" in lead copy (it undersells the product - say what the intelligence enables)
+Plain language preferred over corporate jargon. When using "AI," specify what the AI actually does in the same sentence.
 
 **Grammar and style rules**
 - Em dashes: use a dash (-) or colon (:) instead. No em dashes.

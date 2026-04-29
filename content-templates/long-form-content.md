@@ -8,7 +8,7 @@
 
 **Pull Virlo data first. Always.**
 
-- **For topic selection:** Run `get_trends_digest` ($0.25) or check an existing niche monitor (free) to identify what's driving engagement right now in the target market.
+- **For topic selection:** Run `get_trends_digest` or check an existing niche monitor to identify what's driving engagement right now in the target market.
 - **For hooks:** Pull top-performing video titles from a keyword search - these reveal what language and angles the audience responds to. Hooks that stop video scrollers stop article readers too.
 - **For proof:** Pull Virality Score data, view counts, and creator outlier stats. Real numbers make long-form content credible. Generic claims don't.
 - **For lead magnets specifically:** The data inside the magnet IS the value. Use Orbit search results, niche monitor findings, or creator benchmark data to populate it - not observations from thin air.

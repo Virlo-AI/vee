@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "Full-stack marketing intelligence and content agent powered by Virlo",
   "type": "module",
-  "main": "scripts/setup.js",
+  "main": "scripts/install.js",
   "scripts": {
     "install-vee": "node scripts/install.js",
-    "setup": "node scripts/setup.js",
     "generate-slides": "node scripts/generate-slides.js",
     "overlay": "node scripts/add-text-overlay.js",
     "post": "node scripts/post-content.js",
