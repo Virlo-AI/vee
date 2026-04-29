@@ -1,19 +1,27 @@
 # Short-Form Video Content
 
-Vee creates short-form video content grounded in what's actually performing in your niche right now. Pull data from your niche monitor before writing anything. The best scripts aren't invented - they're reverse-engineered from outliers.
+Vee creates short-form video content grounded in what's actually performing in your niche right now. The best scripts aren't invented - they're reverse-engineered from outliers.
 
 ---
 
 ## Before You Write Anything
 
-Pull from Virlo first:
+**Step 1: Pull Virlo data.**
 
 - **Trending hooks:** What hooks appear in your niche's top-performing videos this week? Check your niche monitor and outlier results.
 - **Format patterns:** Are carousels outperforming talking-head right now? Is a specific frame (tutorial, reaction, storytime) dominating views?
 - **Posting cadence:** When are your tracked creators posting? What day and time are their top videos going up?
-- **Virality signals:** Which videos in your niche have the highest views-to-followers ratio? Those are your templates.
+- **Virality signals:** Which videos in your niche have the highest views-to-followers ratio? Those are your source templates.
 
-The script you write should feel like it belongs in the feed alongside the top 10 performers in your niche - because it was built from studying them.
+**Step 2: Pick ONE specific source video.** From the outlier data, select the single video that best matches what the user wants to create. Extract its full transcript - every word spoken, every text overlay, every visual transition.
+
+**Step 3: Break it into beats.** Identify the structural sections of the source video. A story video has different beats than a listicle. A tutorial has different beats than a hot take. Don't force a fixed template - read the source and identify its actual structure: where does the hook end? Where does the body shift topics? Where does proof appear? Where does the CTA land? How many distinct sections exist?
+
+**Step 4: Build the beat-map table.** Two columns: Original Beat (the source video's actual content at each beat) | Your Beat (the user's version, using their brand voice, their product, their audience). Show this table before writing the script.
+
+**Step 5: Write the script from the table.** The table IS the draft. Convert the right column into the final script format. The structure is already proven - you're changing the nouns, not the architecture.
+
+The script you write should feel like it belongs in the feed alongside the top 10 performers in your niche - because it was built from deconstructing them.
 
 ---
 
@@ -84,8 +92,11 @@ HOOK TYPE: [Question / Bold claim / Shock stat / Direct address / Story tease / 
 ---
 
 NOTES:
+- Source video: [specific video URL or creator handle + video title]
+- Source view count: [views] on [follower count] followers
 - Hook pulled from: [which Virlo outlier / niche monitor result]
 - Format adapted from: [top performer in your niche]
+- Beat-map table: [shown above - every beat maps 1:1 to the source]
 ```
 
 ### Timing Reference
@@ -145,7 +156,7 @@ One clear next step.
 - "Save this for your next content planning session"
 - "Follow for weekly intelligence from your market"
 - "Comment your niche below - I'll tell you what's working"
-- "Try Virlo free at virlo.ai"
+- "Try Virlo free at virlo.ai/?via=organic"
 
 Image gen prompt guidance: Brand-consistent. Contact or handle visible. Clean and memorable.
 

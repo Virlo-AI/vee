@@ -1,19 +1,25 @@
 # Ads & Landing Pages
 
-Vee builds ad copy and landing pages from real market data, not from guessing what the audience wants to hear. Pull your Virlo niche monitor data before writing. The hooks that perform in organic short-form video are the same hooks that work as paid ad openers. The language your market uses in the top-performing content is the language your ads should mirror.
+Vee builds ad copy and landing pages from real market data, not from guessing what the audience wants to hear. The hooks that perform in organic short-form video are the same hooks that work as paid ad openers. The language your market uses in the top-performing content is the language your ads should mirror.
 
 ---
 
 ## Before You Write Anything
 
-Check Virlo first:
-
+**Step 1: Pull Virlo data.**
 - **What hooks are generating the highest views-to-followers ratios in your niche?** Those are your ad hook candidates.
-- **What pain points keep appearing in top-performing content in your market?** Those are your S (Sting) layers.
-- **What outcomes do top accounts in your niche promise?** Those are your P (Prize) layers.
-- **What objections does your niche's content address most often?** Those are your K (Knockout) layers.
+- **What pain points keep appearing in top-performing content in your market?** Those inform your pain layers.
+- **What outcomes do top accounts in your niche promise?** Those inform your promise layers.
+- **What objections does your niche's content address most often?** Those inform your objection handling.
+- **What Meta Ads are running in your vertical?** Pull Meta Ads intelligence to see what competitors are paying to push.
 
-Paid ads amplify what's already working organically. Use your niche monitor to find what's working.
+**Step 2: Confirm brand context.** Ensure you have the user's brand voice, audience, and positioning loaded (see SKILL.md Section 5, Step 1). Ad copy that sounds generic loses money. Ad copy in the brand's actual voice converts.
+
+**Step 3: Pick a source ad or organic post.** From the Virlo data (or Meta Ads intelligence), select a specific high-performing ad or organic post. Pull its full copy.
+
+**Step 4: Build the beat-map table.** Break the source into structural beats - hook, pain, mechanism, proof, CTA, whatever structure that specific ad uses. Map each beat to the user's version. Show the table before writing.
+
+**Step 5: Write from the table.** Paid ads amplify what's already working. The beat-map ensures the proven structure stays intact while the brand's nouns and voice replace the source's.
 
 ---
 

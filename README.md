@@ -35,57 +35,35 @@ RESEARCH  →  ANALYZE  →  CREATE  →  POST  →  TRACK  →  OPTIMIZE
 
 ## Quick Start
 
-### 1. Get Your API Keys
+Open Claude Code and tell your agent:
 
-- **Virlo** - [Sign up](https://virlo.ai/?via=organic) and get your API key at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
-- **PostForMe** - [Sign up](https://postforme.dev) for multi-platform posting
-- **Image gen** - Pick one: OpenAI (DALL-E 3), Stability AI, Replicate (Flux), or Google Gemini
+```
+install Vee for me from https://github.com/Virlo-AI/vee
+```
 
-### 2. Install
+Your agent clones the repo, installs dependencies, registers Vee as a Claude Code skill, wires up the Virlo MCP server, and walks you through API key signups. The whole thing takes ~3 minutes. The only required key is Virlo - PostForMe and image gen are optional and can be added later.
+
+When the installer prompts you to sign up, it gives you direct links to the developer dashboards (no front-end onboarding tutorials, no forced trials):
+
+- Virlo (required): [dev.virlo.ai/signup/?via=organic](https://dev.virlo.ai/signup/?via=organic) - $5 minimum credit to use the API
+- PostForMe (optional, only if you want Vee to post): [postforme.dev/developers](https://www.postforme.dev/developers)
+- Image gen (optional, only if you want Vee to generate slides): pick one - OpenAI, Stability, Replicate, or Gemini
+
+### Doing it manually
+
+If you'd rather run it yourself:
 
 ```bash
 git clone https://github.com/Virlo-AI/vee.git
 cd vee
-npm install
+npm run install-vee
 ```
 
-### 3. Configure
+Same wizard, same result. You can re-run `npm run install-vee` any time to update keys.
 
-```bash
-node scripts/setup.js
-```
+### Talk to Vee
 
-The setup wizard walks you through connecting all your APIs and choosing which platforms to post to.
-
-### 4. Add the Skill
-
-Copy `SKILL.md` to your Claude Code skills directory:
-
-```bash
-cp SKILL.md ~/.claude/skills/vee/SKILL.md
-```
-
-### 5. (Recommended) Add Virlo MCP Server
-
-Add to your `.mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "virlo": {
-      "type": "http",
-      "url": "https://dev.virlo.ai/api/mcp/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_VIRLO_API_KEY"
-      }
-    }
-  }
-}
-```
-
-This gives Vee direct access to Virlo's 20+ MCP tools for research, tracking, and analysis.
-
-### 6. Go
+Once installed, open Claude Code and say:
 
 ```
 "hey vee, research the fitness niche and draft 5 TikTok scripts based on what's trending"
@@ -153,15 +131,19 @@ Vee is transparent about costs. He tells you before every paid operation.
 
 | Operation | Cost |
 |-----------|------|
-| Keyword search | $0.50 |
+| Keyword search (Orbit) | $0.50 |
 | Niche monitor creation | $0.50 |
 | Creator lookup | $0.50 |
 | Video analysis | $0.50 |
 | Trending videos | $0.25 |
+| Trends (`get_trends`) | $0.25 |
 | Trend digest | $0.25 |
 | Creator/video tracking | $0.25/cycle |
 | Hashtag search | $0.05 |
-| Balance check, reading results | Free |
+| Hashtag performance | $0.05 |
+| Sound search / details / trending / videos / history / per-creator | $0.05 each |
+| Manage niche monitor (update/deactivate) | Free |
+| Balance check, list tracked items, reading results | Free |
 
 Full API docs at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic)
 
@@ -180,11 +162,17 @@ Check the `examples/` folder for full walkthroughs:
 - **CMOs / growth teams** who need real-time competitive intelligence, content performance benchmarked against market outliers, and data-backed creative decisions they can actually defend to the CEO
 - **UGC operators / creator managers** who need to identify which creators actually drive views vs which ones just look good on paper, and track creator performance over time
 - **Solo founders / first-time builders** who need an entire marketing operation - research, content, posting, tracking - running in 30 minutes a day without a team or agency budget
-- **Content creators** who want to research what's working in their niche, reverse-engineer outlier hooks beat-by-beat, and create scripts from proven patterns instead of guessing
+- **Personal brands** monetizing through coaching, courses, masterminds, or high-ticket offers who need to know what their peers' hooks are converting before building their next piece of content
+- **Independent content operators** running their own faces and voices on TikTok, Reels, or YouTube Shorts - making revenue through ad rev, sponsorships, UGC deals, and digital products - who need to research what's working in their niche and reverse-engineer outlier hooks beat-by-beat
+- **Local and brick-and-mortar businesses** (cafes, gyms, dental offices, real estate, beauty, restaurants) who need their social presence built from trends actually moving in their service area
 - **API builders / developers** who want to plug Virlo's intelligence into their own products and workflows - custom dashboards, client-facing tools, automated pipelines
 - **Freelance marketers / consultants** who want to deliver competitive intelligence reports as a service, pitch clients with real niche data, and build retainers around research their clients can't do themselves
 - **Ad buyers / media buyers** who need Meta Ads intelligence showing what competitors are spending on, cross-referenced with organic winners to validate creative angles before spending budget
 - **Sales teams doing outbound** who need cold emails built from trending pain points in their prospect's niche, LinkedIn posts for personal brand, and competitive reports as lead magnets
+
+## Support
+
+Stuck setting up Vee or hitting an error during install? Email [info@virlo.ai](mailto:info@virlo.ai) and we'll unstick you. For Virlo API questions specifically, the docs at [dev.virlo.ai/docs](https://dev.virlo.ai/docs/?via=organic) have a playground you can test endpoints in.
 
 ## License
 

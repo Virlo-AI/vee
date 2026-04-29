@@ -4,8 +4,6 @@ Generate a free-value research report to pitch a potential client - show them wh
 
 **Scenario:** You're pitching a DTC fitness brand called IronForm. They post sporadically and don't have a content strategy. You want to walk into the pitch with data about their own market that they've never seen.
 
-**Total Virlo cost:** $2.00
-
 ---
 
 ## The strategy behind this workflow
@@ -21,8 +19,6 @@ This workflow produces a report that shows IronForm exactly what their competito
 ```
 "Research the home gym and fitness equipment niche - TikTok and Reels, last 30 days, minimum 50K views"
 ```
-
-Vee states the cost: "keyword search costs $0.50 - running it now."
 
 Vee runs `search_keywords`:
 - Keywords: `["home gym", "fitness equipment", "gym setup", "home workout equipment", "gym tour"]`
@@ -42,8 +38,6 @@ Wait 30-55 seconds for results.
 "Look up IronForm on TikTok and Instagram. Also look up two of their biggest competitors: @roguefitness and @repfitness"
 ```
 
-Vee states the cost: "3 creator lookups at $0.50 each - $1.50 total."
-
 Vee runs `batch_lookup_creators` for all three:
 
 **IronForm (the prospect):**
@@ -57,8 +51,6 @@ Vee runs `batch_lookup_creators` for all three:
 - Their outlier content flagged with what made each video perform above their baseline
 - Posting cadence comparison
 
-**Total cost to this point: $2.00**
-
 ---
 
 ## Step 3: Analyze the gap
@@ -67,7 +59,7 @@ Vee runs `batch_lookup_creators` for all three:
 "Compare IronForm's performance against the niche and their competitors. Where are they underperforming and why?"
 ```
 
-Vee pulls all data from completed lookups and searches (free reads) and runs the comparison.
+Vee pulls all data from completed lookups and searches and runs the comparison.
 
 **Example findings:**
 
@@ -151,4 +143,4 @@ The report is credible because the numbers are real. IronForm's 18K average view
 
 That specificity is what separates this from a generic competitive analysis. Any agency can say "your competitors are outperforming you." Not many can show the exact format, the exact cadence gap, and the exact posting window the data supports.
 
-The $2.00 in Virlo costs produces a report that would take 10+ hours to compile manually, delivered in under 20 minutes. The cost of not doing this is walking into a pitch without a hook.
+Virlo produces a report that would take 10+ hours to compile manually, delivered in under 20 minutes. The alternative is walking into a pitch without a hook.

@@ -6,7 +6,18 @@
   },
   "postforme": {
     "api_key": "YOUR_POSTFORME_API_KEY",
-    "base_url": "https://api.postforme.dev"
+    "base_url": "https://api.postforme.dev",
+    "social_accounts": {
+      "tiktok": "sa_REPLACE_WITH_YOUR_TIKTOK_ACCOUNT_ID",
+      "instagram": "sa_REPLACE_WITH_YOUR_INSTAGRAM_ACCOUNT_ID",
+      "youtube": "sa_REPLACE_WITH_YOUR_YOUTUBE_ACCOUNT_ID",
+      "x": "sa_REPLACE_WITH_YOUR_X_ACCOUNT_ID",
+      "linkedin": "sa_REPLACE_WITH_YOUR_LINKEDIN_ACCOUNT_ID",
+      "facebook": "sa_REPLACE_WITH_YOUR_FACEBOOK_ACCOUNT_ID",
+      "threads": "sa_REPLACE_WITH_YOUR_THREADS_ACCOUNT_ID",
+      "pinterest": "sa_REPLACE_WITH_YOUR_PINTEREST_ACCOUNT_ID",
+      "bluesky": "sa_REPLACE_WITH_YOUR_BLUESKY_ACCOUNT_ID"
+    }
   },
   "image_gen": {
     "provider": "openai",
@@ -28,6 +39,7 @@
     "niche_keywords": [],
     "posting_schedule": "optimal",
     "slide_count": 6,
-    "output_dir": "./output"
+    "output_dir": "./output",
+    "media_host_base_url": ""
   }
 }

@@ -4,8 +4,6 @@ Set up long-term tracking of competitor accounts and get weekly intelligence tha
 
 **Scenario:** You manage social for a SaaS company called DataPulse. You want ongoing visibility into what 5 competitor accounts are posting, what's landing, and where the gaps are that DataPulse can move into.
 
-**Ongoing cost:** ~$45/month for 5 creators tracked daily
-
 ---
 
 ## The difference between one-time and persistent monitoring
@@ -20,7 +18,7 @@ The longer you track, the more the data compounds. Month 3 patterns are more val
 
 ## Step 1: Identify the competitors to track
 
-You already know who you're watching. If you don't, run a keyword search first (`search_keywords`, $0.50) to find who's dominating the SaaS analytics content space, then decide which accounts matter most.
+You already know who you're watching. If you don't, run a keyword search first (`search_keywords`) to find who's dominating the SaaS analytics content space, then decide which accounts matter most.
 
 For DataPulse, the five accounts to track:
 - @mixpanel on TikTok
@@ -37,9 +35,7 @@ For DataPulse, the five accounts to track:
 "Track all 5 of these competitor accounts. Daily scraping, give me weekly AI reports."
 ```
 
-Vee states the cost: "tracking costs $0.25 per creator per day. 5 creators = $1.25/day, $8.75/week, approximately $38/month. confirming before I start all 5."
-
-Once confirmed, Vee runs `track_creator` for each account:
+Vee runs `track_creator` for each account:
 - `scrape_cadence`: daily
 - Virlo pulls fresh metrics every 24 hours
 - AI-generated performance reports are available on demand at any time
@@ -51,7 +47,7 @@ Once confirmed, Vee runs `track_creator` for each account:
 - Follower count changes
 - Engagement rate trends
 
-All reads after setup are free (`get_tracking_report`, `list_creator_posts`, `get_posting_cadence`).
+Reads after setup: `get_tracking_report`, `list_creator_posts`, `get_posting_cadence`.
 
 ---
 
@@ -62,8 +58,6 @@ Creator tracking covers specific accounts. A niche monitor covers the whole spac
 ```
 "Create a weekly niche monitor for SaaS analytics content. Keywords: product analytics, user analytics, analytics platform, data-driven product, SaaS metrics. TikTok and Instagram."
 ```
-
-Vee states the cost: "$0.50 to create the monitor."
 
 Vee runs `create_niche_monitor`:
 - Cadence: weekly
@@ -81,7 +75,7 @@ Every week (or whenever you want a briefing):
 "Give me this week's competitor intelligence digest"
 ```
 
-Vee pulls from all tracking sources (all free reads):
+Vee pulls from all tracking sources:
 
 1. `get_tracking_report` for all 5 creators - AI-generated summaries of what each posted, what performed, and what's notable
 2. `list_creator_posts` for each creator - the actual post list with per-post metrics
@@ -116,8 +110,6 @@ Sometimes a competitor posts something that significantly outperforms their base
 "Mixpanel just posted something that looks like it's outperforming. Analyze it."
 ```
 
-Vee states the cost: "video analysis costs $0.50."
-
 Vee runs `analyze_video` on the URL:
 - Compares this video's performance against Mixpanel's average
 - Pulls the Virality Score and explains the components driving it
@@ -144,19 +136,6 @@ Vee loads `content-templates/reports-intelligence.md` and generates a formal rep
 - DataPulse's opportunities: specific gaps identified from the data with a recommended action for each
 
 The report is ready to export as PDF directly from Virlo. The tracking data that powers it has been accumulating automatically since Day 1 - no one had to manually collect it.
-
----
-
-## How costs break down
-
-| Item | Cost |
-|---|---|
-| 5 creator tracking setups (one-time) | Free after initial scrape |
-| Daily scraping - 5 creators | $1.25/day |
-| Niche monitor (weekly) | $0.50/week |
-| Ad-hoc video analysis | $0.50 each |
-| All reads, reports, digests | Free |
-| **Monthly total (no extra analyses)** | **~$43** |
 
 ---
 

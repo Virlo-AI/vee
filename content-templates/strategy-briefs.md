@@ -4,16 +4,17 @@
 
 ---
 
-## Step 0: Research Before Briefing
+## Step 0: Research and Context Before Briefing
 
-Pull Virlo data before writing any brief. The brief's value comes from specificity. Specificity comes from data.
-
+**Pull Virlo data first.**
 - **Reference examples:** Pull top-performing videos from a niche keyword search or existing niche monitor. These become the brief's reference section. Not generic "make it engaging" - specific URLs with Virality Scores.
 - **Hook angles:** What hook types are driving the highest engagement in this niche right now? The brief should specify hooks, not leave them to the creator's discretion.
 - **Format data:** Which formats (talking head, text overlay, voiceover, slideshow) dominate in the niche this month? The brief specifies formats based on what's working.
 - **Timing:** Pull creator posting cadence data from `get_posting_cadence` on tracked accounts. Calendars built on real timing data outperform those built on "best practices."
 
-Minimum: one free data pull (existing niche monitor or previous keyword search) before finalizing any brief. Briefs that reference real Virlo data get better creative output than briefs that don't.
+**Confirm brand context.** Ensure you have the user's brand voice, audience, and positioning loaded (see SKILL.md Section 5, Step 1). A brief that doesn't capture the brand's voice produces content that sounds off-brand.
+
+**Include source content in the brief itself.** The most useful thing a brief can contain is a beat-map of a proven piece of content from the niche. Pull a top-performing video, deconstruct its beats, and include the table in the brief. The creator or team receiving the brief doesn't have to guess what "make it engaging" means - they have a structural blueprint from something that already worked.
 
 ---
 
@@ -39,7 +40,7 @@ Three adjectives maximum. Each one with a "sounds like X, not Y" example. Generi
 Real numbers from Virlo data that the piece should reference. If it's a social post, one stat. If it's a video script, 2-3 data points woven in naturally.
 
 **CTA**
-The one action. Stated exactly as it should appear in the content. Not "drive to the website" - "go to virlo.ai and start your first niche free."
+The one action. Stated exactly as it should appear in the content. Not "drive to the website" - "go to virlo.ai/?via=organic and start your first niche free."
 
 **Platform specs**
 - TikTok: vertical 9:16, 15-60 seconds for hooks, 60-180 for tutorials

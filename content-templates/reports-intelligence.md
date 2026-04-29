@@ -368,7 +368,7 @@ This report was built using Virlo's niche intelligence platform, which continuou
 
 This took [X] minutes to pull. We can set up ongoing monitoring for your niche so you get a fresh version of this report every week - automatically.
 
-[CTA: Book a call to discuss / Start for free at virlo.ai]
+[CTA: Book a call to discuss / Start for free at virlo.ai/?via=organic]
 cal.com/team/virlo/booking-demo
 ```
 

@@ -20,7 +20,7 @@ const print = (...args) => console.log(...args);
 
 async function checkVirloKey(apiKey) {
   const fetch = (await import('node-fetch')).default;
-  const res = await fetch('https://dev.virlo.ai/api/balance', {
+  const res = await fetch('https://dev.virlo.ai/api/credits/balance', {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -85,7 +85,9 @@ async function run() {
 
   // --- Virlo API key ---
   print('step 1: virlo api key');
-  print('  get one at https://dev.virlo.ai/docs/?via=organic\n');
+  print('  sign up at https://virlo.ai/?via=organic');
+  print('  then create your key at https://dev.virlo.ai/?via=organic (Settings → API Keys)');
+  print('  format: virlo_tkn_...\n');
   const virloHint = ex?.virlo?.api_key ? ` (current: ${ex.virlo.api_key.slice(0, 8)}...)` : '';
   const virloKey = await ask(`  virlo api key${virloHint}: `);
   const finalVirloKey = virloKey === '' && ex?.virlo?.api_key ? ex.virlo.api_key : virloKey;
@@ -98,17 +100,27 @@ async function run() {
 
   // --- PostForMe API key ---
   print('\nstep 2: postforme api key');
-  print('  get one at https://postforme.dev\n');
+  print('  sign up at https://www.postforme.dev/developers');
+  print('  connect your social accounts in the dashboard, then copy the api key');
+  print('  you will also need to copy your social_account ids per platform - paste them in vee-config.json under postforme.social_accounts after setup\n');
   const pfHint = ex?.postforme?.api_key ? ` (current: ${ex.postforme.api_key.slice(0, 8)}...)` : '';
   const pfKey = await ask(`  postforme api key${pfHint}: `);
   const finalPfKey = pfKey === '' && ex?.postforme?.api_key ? ex.postforme.api_key : pfKey;
 
   // --- Image gen ---
   print('\nstep 3: image generation');
+  print('  pick one provider. get the key at:');
+  print('    openai     -> https://platform.openai.com/api-keys');
+  print('    stability  -> https://platform.stability.ai/account/keys');
+  print('    replicate  -> https://replicate.com/account/api-tokens');
+  print('    gemini     -> https://aistudio.google.com/app/apikey\n');
   const provider = await promptImageProvider(ex?.image_gen?.provider);
   const imgHint = ex?.image_gen?.api_key ? ` (current: ${ex.image_gen.api_key.slice(0, 8)}...)` : '';
   const imgKey = await ask(`  ${provider} api key${imgHint}: `);
   const finalImgKey = imgKey === '' && ex?.image_gen?.api_key ? ex.image_gen.api_key : imgKey;
+  if (!finalImgKey) {
+    print(`  heads up: no ${provider} key entered. slide generation will fail until you add one to vee-config.json or your env.`);
+  }
 
   // --- Platforms ---
   print('\nstep 4: platforms');
@@ -124,13 +136,12 @@ async function run() {
     : kwRaw.split(',').map((k) => k.trim()).filter(Boolean);
 
   // --- Test Virlo connection ---
-  print('\ntesting virlo api connection...');
+  print('\nTesting Virlo API connection...');
   try {
-    const balance = await checkVirloKey(finalVirloKey);
-    const credits = balance?.balance ?? balance?.credits ?? JSON.stringify(balance);
-    print(`  connected. balance: ${credits}`);
+    await checkVirloKey(finalVirloKey);
+    print('  Connected.');
   } catch (err) {
-    print(`  couldn't connect to virlo: ${err.message}`);
+    print(`  Couldn't connect to Virlo: ${err.message}`);
     const proceed = await ask('  proceed anyway? [y/N]: ');
     if (proceed.toLowerCase() !== 'y') {
       print('\n  alright, fix the key and come back.\n');
@@ -149,6 +160,17 @@ async function run() {
     postforme: {
       api_key: finalPfKey || '',
       base_url: 'https://api.postforme.dev',
+      social_accounts: ex?.postforme?.social_accounts ?? {
+        tiktok: '',
+        instagram: '',
+        youtube: '',
+        x: '',
+        linkedin: '',
+        facebook: '',
+        threads: '',
+        pinterest: '',
+        bluesky: '',
+      },
     },
     image_gen: {
       provider,
@@ -161,6 +183,7 @@ async function run() {
       posting_schedule: ex?.defaults?.posting_schedule ?? 'optimal',
       slide_count: ex?.defaults?.slide_count ?? 6,
       output_dir: ex?.defaults?.output_dir ?? './output',
+      media_host_base_url: ex?.defaults?.media_host_base_url ?? '',
     },
   };
 
@@ -179,6 +202,14 @@ async function run() {
   print(`  platforms: ${enabledPlatforms.join(', ') || 'none'}`);
   print(`  image gen: ${provider}`);
   print(`  keywords: ${niche_keywords.join(', ') || 'none set'}`);
+
+  if (finalPfKey) {
+    print('\none more thing - postforme social_account ids:');
+    print('  open vee-config.json and fill in postforme.social_accounts.<platform>');
+    print('  for every platform you enabled. find ids in your postforme dashboard.');
+    print('  posting will fail until these are filled in.');
+  }
+
   print('\nrun `npm run generate-slides` to start.\n');
 
   rl.close();

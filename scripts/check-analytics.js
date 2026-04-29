@@ -278,7 +278,7 @@ async function checkAnalytics({ postId = null, all = false, asJson = false, limi
     const posts = await listRecentPosts(limit);
 
     if (posts.length === 0) {
-      console.log('vee: nothing posted yet. let's fix that.');
+      console.log("vee: nothing posted yet. let's fix that.");
       return { posts: [] };
     }
 

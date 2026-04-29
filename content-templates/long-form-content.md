@@ -4,16 +4,20 @@
 
 ---
 
-## Step 0: Research Before Writing
+## Step 0: Research and Context Before Writing
 
-Pull Virlo data first. Always.
+**Pull Virlo data first. Always.**
 
 - **For topic selection:** Run `get_trends_digest` ($0.25) or check an existing niche monitor (free) to identify what's driving engagement right now in the target market.
 - **For hooks:** Pull top-performing video titles from a keyword search - these reveal what language and angles the audience responds to. Hooks that stop video scrollers stop article readers too.
 - **For proof:** Pull Virality Score data, view counts, and creator outlier stats. Real numbers make long-form content credible. Generic claims don't.
 - **For lead magnets specifically:** The data inside the magnet IS the value. Use Orbit search results, niche monitor findings, or creator benchmark data to populate it - not observations from thin air.
 
-Minimum research requirement: at least one Virlo data pull before drafting. The resulting copy should reference specific findings. If a reader could have found this on Google without Virlo data behind it, the research step was skipped.
+Minimum research requirement: at least one Virlo data pull before drafting. The resulting copy should reference specific findings.
+
+**Confirm brand context.** Ensure you have the user's brand voice, audience, and positioning loaded (see SKILL.md Section 5, Step 1). Long-form content reveals voice weaknesses faster than any other format. If you don't know how the brand talks, every paragraph will sound like a different writer.
+
+**Pick a source piece.** Find a high-performing long-form piece in the user's niche (article, newsletter, case study) and break it into structural beats. Map the user's version beat-by-beat before drafting. Long-form content without a structural source meanders. With one, every section has a clear job.
 
 ---
 
@@ -36,7 +40,7 @@ Minimum research requirement: at least one Virlo data pull before drafting. The 
 
 5. **Actionable takeaways** - What do they do in the next 24 hours? Not "consider your strategy" - actual steps. Numbered list, short items, no passive voice. Every takeaway should be completable.
 
-6. **CTA** - One action. Match to the awareness stage. Top-of-funnel articles: "start exploring your niche for free at virlo.ai" or direct to the lead magnet. Bottom-of-funnel articles: book a call or start trial. Never two CTAs. Pick one.
+6. **CTA** - One action. Match to the awareness stage. Top-of-funnel articles: "start exploring your niche for free at virlo.ai/?via=organic" or direct to the lead magnet. Bottom-of-funnel articles: book a call or start trial. Never two CTAs. Pick one.
 
 **SEO mechanics:**
 - Target keyword in: H1, URL, first 100 words, at least 2 subheadings
@@ -193,7 +197,7 @@ Minimum research requirement: at least one Virlo data pull before drafting. The 
 - Write like you talk. Read every line out loud. Fix anything you stumble on.
 - Shorter sentences than written content. More fragments allowed.
 - Story arcs over feature explanations. "Here's what happened when a team ran this on their supplement niche" beats "here's how Orbit works."
-- CTA woven in twice: mid-episode ("virlo.ai to get your first niche free") and end.
+- CTA woven in twice: mid-episode ("virlo.ai/?via=organic to get your first niche free") and end.
 
 ---
 

@@ -1,17 +1,24 @@
 # Social Posts
 
-Vee writes social posts from real data, not blank pages. Before drafting anything, pull trending topics, hook patterns, and posting cadence data from your Virlo niche monitor. The best-performing posts in any market share structural patterns - find them, then build from them.
+Vee writes social posts from real data, not blank pages. The best-performing posts in any market share structural patterns - find them, deconstruct them, then rebuild them for the user's brand.
 
 ---
 
 ## Before You Write Anything
 
-Check Virlo first:
-
+**Step 1: Pull Virlo data.**
 - **What topics are generating the most views in your niche this week?** Your niche monitor shows you. Start there.
 - **What hook styles are dominating your market's top performers?** Pull from outlier analysis - look at the first line of their captions and the first text card of their videos.
 - **What's your posting cadence data showing?** If your tracked creators are posting 5x per week and outperforming accounts posting 2x, that's a signal.
 - **What did your own recent posts do?** The daily report shows views, likes, and engagement broken out. Build more of what's working.
+
+**Step 2: Confirm brand context.** Before writing, ensure you have the user's brand voice, audience, and positioning loaded (see SKILL.md Section 5, Step 1). If this is a first interaction, gather it now. If brand context files exist in their repo, read them first.
+
+**Step 3: Pick a source post.** From the Virlo data, select a specific high-performing post that matches the format the user wants (LinkedIn thought leadership, X thread, Instagram caption, etc.). Pull its full text.
+
+**Step 4: Build the beat-map table.** Break the source post into structural beats. Map each beat to the user's version using their brand context. Show the table before writing the draft.
+
+**Step 5: Write from the table.** The beat-map IS the draft. Convert the right column into the final post. The structure is proven - you're swapping the nouns.
 
 ---
 

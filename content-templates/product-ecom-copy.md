@@ -4,9 +4,9 @@
 
 ---
 
-## Step 0: Virlo Data Before Product Copy
+## Step 0: Research and Context Before Product Copy
 
-Product copy that starts from a blank page produces generic output. Product copy that starts from Virlo data produces copy that sounds like it was written by someone who's spent hours studying what's actually working.
+**Pull Virlo data first.**
 
 **Before writing ecom product descriptions:** Pull trending hooks from the relevant product niche. The hook formats driving views in supplement, fashion, beauty, or fitness content on TikTok are the same patterns that work in product ad copy. They're the same audience.
 
@@ -14,7 +14,9 @@ Product copy that starts from a blank page produces generic output. Product copy
 
 **Before writing comparison pages:** Pull creator data from the competitor's category using Orbit. What are they saying their tool does? What are users complaining about in comments? That's the objection and differentiation map.
 
-Minimum: one data pull from a relevant niche or category search before drafting.
+**Confirm brand context.** Ensure you have the user's brand voice, audience, and positioning loaded (see SKILL.md Section 5, Step 1). Product copy that sounds like every other listing on the page doesn't convert. Product copy in the brand's voice stands out.
+
+**Pick a source product listing or ad.** Find a top-performing product ad or listing in the niche (from Meta Ads intelligence or Virlo data). Break its copy into beats - headline, pain, mechanism, proof, offer, CTA. Build the user's version from the same structure using their product and voice. The proven structure stays. The nouns change.
 
 ---
 
@@ -44,7 +46,7 @@ Apply the "which means" bridge to every feature claim:
 
 4. **Social proof (1 sentence)** - One specific number or result. Apply SPARKS A (Anchor the Assurance) - woven in directly after the differentiator, not dropped in a separate "testimonials" block.
 
-5. **CTA** - One action. "Start for free at virlo.ai" or "Start your 7-day free trial." Never two CTAs.
+5. **CTA** - One action. "Start for free at virlo.ai/?via=organic" or "Start your 7-day free trial." Never two CTAs.
 
 **Format notes:**
 - Mobile first. Most product pages are read on a phone. Short paragraphs. Bullet points for specs.

@@ -14,7 +14,7 @@ function loadConfig() {
   return JSON.parse(readFileSync(configPath, 'utf8'));
 }
 
-async function virloGet(path, apiKey, baseUrl = 'https://dev.virlo.ai') {
+async function virloGet(path, apiKey, baseUrl = 'https://api.virlo.ai') {
   const { default: fetch } = await import('node-fetch');
   const res = await fetch(`${baseUrl}${path}`, {
     headers: {
@@ -30,7 +30,7 @@ async function virloGet(path, apiKey, baseUrl = 'https://dev.virlo.ai') {
 
 async function fetchTrackedCreators(apiKey) {
   try {
-    const data = await virloGet('/api/v1/tracking/creators', apiKey);
+    const data = await virloGet('/v1/tracking/creators', apiKey);
     return data?.data ?? data ?? [];
   } catch (err) {
     console.error(`couldn't pull tracked creators. ${err.message}`);
@@ -40,7 +40,7 @@ async function fetchTrackedCreators(apiKey) {
 
 async function fetchTrackedVideos(apiKey) {
   try {
-    const data = await virloGet('/api/v1/tracking/videos', apiKey);
+    const data = await virloGet('/v1/tracking/videos', apiKey);
     return data?.data ?? data ?? [];
   } catch (err) {
     console.error(`couldn't pull tracked videos. ${err.message}`);
@@ -51,7 +51,7 @@ async function fetchTrackedVideos(apiKey) {
 async function fetchCreatorSnapshots(creatorId, apiKey) {
   try {
     const data = await virloGet(
-      `/api/v1/tracking/creators/${creatorId}/snapshots?limit=7`,
+      `/v1/tracking/creators/${creatorId}/snapshots?limit=7`,
       apiKey,
     );
     return data?.data ?? data ?? [];
@@ -63,7 +63,7 @@ async function fetchCreatorSnapshots(creatorId, apiKey) {
 async function fetchVideoSnapshots(videoId, apiKey) {
   try {
     const data = await virloGet(
-      `/api/v1/tracking/videos/${videoId}/snapshots?limit=7`,
+      `/v1/tracking/videos/${videoId}/snapshots?limit=7`,
       apiKey,
     );
     return data?.data ?? data ?? [];
@@ -74,7 +74,7 @@ async function fetchVideoSnapshots(videoId, apiKey) {
 
 async function fetchTrendDigest(apiKey) {
   try {
-    const data = await virloGet('/api/v1/trends/digest', apiKey);
+    const data = await virloGet('/v1/trends/digest', apiKey);
     return data?.data ?? data ?? null;
   } catch (err) {
     console.error(`trend digest failed. ${err.message}`);
@@ -82,23 +82,58 @@ async function fetchTrendDigest(apiKey) {
   }
 }
 
-async function fetchBalance(apiKey) {
-  try {
-    const data = await virloGet('/api/v1/account/balance', apiKey);
-    return data?.balance ?? data?.credits ?? null;
-  } catch {
-    return null;
-  }
-}
-
-async function loadPostForMeAnalytics() {
+async function loadPostForMeAnalytics({ hours = 24, limit = 50 } = {}) {
   try {
     const analyticsPath = resolve(__dirname, './check-analytics.js');
     if (!existsSync(analyticsPath)) return null;
     const mod = await import(analyticsPath);
-    const fn = mod.getRecentPostAnalytics ?? mod.checkAnalytics ?? mod.default;
+    const fn = mod.checkAnalytics ?? mod.default;
     if (typeof fn !== 'function') return null;
-    return await fn({ hours: 24 });
+    // Silence the sub-script's stdout while we just want the data.
+    const origLog = console.log;
+    console.log = () => {};
+    let result;
+    try {
+      result = await fn({ all: true, limit, asJson: true });
+    } finally {
+      console.log = origLog;
+    }
+    const allPosts = Array.isArray(result?.posts) ? result.posts : [];
+    const cutoff = Date.now() - hours * 60 * 60 * 1000;
+    const recent = allPosts.filter((p) => {
+      const created = p.created_at ? new Date(p.created_at).getTime() : null;
+      return created !== null && created >= cutoff;
+    });
+    const items = recent.map((p) => ({
+      id: p.post_id,
+      caption: p.caption,
+      title: p.caption?.slice(0, 60),
+      views: p.aggregates?.views ?? null,
+      likes: p.aggregates?.likes ?? null,
+      comments: p.aggregates?.comments ?? null,
+      shares: p.aggregates?.shares ?? null,
+      engagement_rate: p.aggregates?.engagement_rate ?? null,
+    }));
+    const viewsList = items.map((i) => i.views ?? 0).sort((a, b) => a - b);
+    const engList = items.map((i) => i.engagement_rate ?? 0).sort((a, b) => a - b);
+    const median = (arr) => arr.length === 0 ? 0 : arr[Math.floor(arr.length / 2)];
+    const viewMed = median(viewsList);
+    const engMed = median(engList);
+    const quadrants = {
+      highViewsHighEng: [],
+      highViewsLowEng: [],
+      lowViewsHighEng: [],
+      lowViewsLowEng: [],
+    };
+    for (const i of items) {
+      const hv = (i.views ?? 0) >= viewMed;
+      const he = (i.engagement_rate ?? 0) >= engMed;
+      if (hv && he) quadrants.highViewsHighEng.push(i);
+      else if (hv && !he) quadrants.highViewsLowEng.push(i);
+      else if (!hv && he) quadrants.lowViewsHighEng.push(i);
+      else quadrants.lowViewsLowEng.push(i);
+    }
+    return { items, quadrants };
   } catch {
     return null;
   }
@@ -124,34 +159,6 @@ function fmtNum(n) {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
   return String(n);
-}
-
-function categorize2x2(posts) {
-  if (!posts?.length) return null;
-
-  const viewMedian = median(posts.map((p) => p.views ?? 0));
-  const engMedian = median(posts.map((p) => p.engagement ?? p.likes ?? 0));
-
-  const quadrants = {
-    highViewsHighEng: [],
-    highViewsLowEng: [],
-    lowViewsHighEng: [],
-    lowViewsLowEng: [],
-  };
-
-  for (const post of posts) {
-    const views = post.views ?? 0;
-    const eng = post.engagement ?? post.likes ?? 0;
-    const highV = views >= viewMedian;
-    const highE = eng >= engMedian;
-
-    if (highV && highE) quadrants.highViewsHighEng.push(post);
-    else if (highV && !highE) quadrants.highViewsLowEng.push(post);
-    else if (!highV && highE) quadrants.lowViewsHighEng.push(post);
-    else quadrants.lowViewsLowEng.push(post);
-  }
-
-  return quadrants;
 }
 
 function median(arr) {
@@ -206,7 +213,7 @@ function recommendations(creatorData, videoData, postData) {
   return recs;
 }
 
-function buildReport({ date, creators, videos, posts, trends, balance }) {
+function buildReport({ date, creators, videos, posts, trends }) {
   const lines = [];
 
   lines.push(`# daily report — ${date}`);
@@ -331,15 +338,6 @@ function buildReport({ date, creators, videos, posts, trends, balance }) {
   }
   lines.push('');
 
-  lines.push(`---\n`);
-  lines.push(`## balance\n`);
-
-  if (balance != null) {
-    lines.push(`virlo api balance: **$${typeof balance === 'number' ? balance.toFixed(2) : balance}**\n`);
-  } else {
-    lines.push(`balance unavailable.\n`);
-  }
-
   lines.push(`---`);
   lines.push(`\n*generated by vee — virlo content agent*`);
 
@@ -416,21 +414,9 @@ async function generateReport(configOverride) {
   console.log('fetching trend digest...');
   const trendRaw = await fetchTrendDigest(virloKey);
 
-  console.log('fetching account balance...');
-  const balance = await fetchBalance(virloKey);
-
   console.log('checking postforme analytics...');
   const pfRaw = await loadPostForMeAnalytics();
-  const posts = pfRaw
-    ? {
-        items: Array.isArray(pfRaw) ? pfRaw : pfRaw.posts ?? pfRaw.items ?? [],
-        quadrants: null,
-      }
-    : { items: [], quadrants: null };
-
-  if (posts.items.length) {
-    posts.quadrants = categorize2x2(posts.items);
-  }
+  const posts = pfRaw ?? { items: [], quadrants: null };
 
   const report = buildReport({
     date,
@@ -438,7 +424,6 @@ async function generateReport(configOverride) {
     videos,
     posts,
     trends: trendRaw,
-    balance,
   });
 
   console.log('\n' + '─'.repeat(60) + '\n');

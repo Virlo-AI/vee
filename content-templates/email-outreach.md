@@ -1,17 +1,24 @@
 # Email & Outreach
 
-Vee writes email and outreach copy grounded in real market intelligence. Pull trending topics, proof points, and audience language from your Virlo data before drafting anything. The best outreach doesn't feel like outreach - it feels like someone who understands the reader's specific situation reaching out at the right moment.
+Vee writes email and outreach copy grounded in real market intelligence. The best outreach doesn't feel like outreach - it feels like someone who understands the reader's specific situation reaching out at the right moment.
 
 ---
 
 ## Before You Write Anything
 
-Check Virlo first:
-
-- **What topics are generating the most engagement in your niche right now?** Your niche monitor shows you. Use that for nurture and newsletter content - write about what's already pulling attention.
+**Step 1: Pull Virlo data.**
+- **What topics are generating the most engagement in your niche right now?** Your niche monitor shows you. Use that for nurture and newsletter content.
 - **What are the top-performing hooks in your market?** The same patterns that stop scrolls in short-form video work as email subject lines.
-- **What tracked creator data can you reference as proof?** Real numbers make claims credible. Approximate to clean numbers (870K not 873,214).
+- **What tracked creator data can you reference as proof?** Real numbers make claims credible. Round to clean numbers (870K not 873,214).
 - **What does your daily report show about your own content performance?** Use your wins as email proof points.
+
+**Step 2: Confirm brand context.** Ensure you have the user's brand voice, audience, and positioning loaded (see SKILL.md Section 5, Step 1). Cold emails that sound like templates get deleted. Cold emails in a real voice get replies.
+
+**Step 3: Pick a source email or outreach message.** If the user has an email that performed well before, use it as the structural template. If not, select the email structure from this template that best matches their goal and apply the beat-map process.
+
+**Step 4: Build the beat-map table.** Break the source email into beats - subject line, opener, pain observation, mechanism, proof, CTA. Map each beat to the user's version with their brand context and Virlo data. Show the table before writing.
+
+**Step 5: Write from the table.** The structure is the proven part. The user's voice, data, and specifics are what make it feel personal instead of templated.
 
 ---
 

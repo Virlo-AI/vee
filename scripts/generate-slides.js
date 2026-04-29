@@ -41,8 +41,17 @@ function resolveApiKey(provider, config) {
 // Providers
 // ---------------------------------------------------------------------------
 
-async function generateOpenAI({ prompt, count, apiKey }) {
+// OpenAI DALL-E 3 supports: 1024x1024, 1024x1792 (portrait), 1792x1024 (landscape)
+function resolveOpenAISize(size, aspectRatio) {
+  if (size) return size;
+  if (aspectRatio === '9:16' || aspectRatio === 'portrait') return '1024x1792';
+  if (aspectRatio === '16:9' || aspectRatio === 'landscape') return '1792x1024';
+  return '1024x1024';
+}
+
+async function generateOpenAI({ prompt, count, apiKey, size, aspectRatio }) {
   const fetch = (await import('node-fetch')).default;
+  const resolvedSize = resolveOpenAISize(size, aspectRatio);
 
   const urls = [];
   for (let i = 0; i < count; i++) {
@@ -56,7 +65,7 @@ async function generateOpenAI({ prompt, count, apiKey }) {
         model: 'dall-e-3',
         prompt,
         n: 1,
-        size: '1024x1024',
+        size: resolvedSize,
         response_format: 'url',
       }),
     });
@@ -70,8 +79,20 @@ async function generateOpenAI({ prompt, count, apiKey }) {
   return urls;
 }
 
-async function generateStability({ prompt, count, apiKey }) {
+// Stability SDXL supports specific dimensions only; pick closest match
+function resolveStabilityDims(size, aspectRatio) {
+  if (size) {
+    const [w, h] = size.split('x').map(Number);
+    if (w && h) return { width: w, height: h };
+  }
+  if (aspectRatio === '9:16' || aspectRatio === 'portrait') return { width: 768, height: 1344 };
+  if (aspectRatio === '16:9' || aspectRatio === 'landscape') return { width: 1344, height: 768 };
+  return { width: 1024, height: 1024 };
+}
+
+async function generateStability({ prompt, count, apiKey, size, aspectRatio }) {
   const fetch = (await import('node-fetch')).default;
+  const { width, height } = resolveStabilityDims(size, aspectRatio);
 
   const urls = [];
   for (let i = 0; i < count; i++) {
@@ -87,8 +108,8 @@ async function generateStability({ prompt, count, apiKey }) {
         body: JSON.stringify({
           text_prompts: [{ text: prompt, weight: 1 }],
           cfg_scale: 7,
-          height: 1024,
-          width: 1024,
+          height,
+          width,
           samples: 1,
           steps: 30,
         }),
@@ -105,10 +126,14 @@ async function generateStability({ prompt, count, apiKey }) {
   return urls;
 }
 
-async function generateReplicate({ prompt, count, apiKey }) {
+async function generateReplicate({ prompt, count, apiKey, aspectRatio }) {
   const fetch = (await import('node-fetch')).default;
 
   const MODEL_VERSION = 'black-forest-labs/flux-schnell';
+  // Flux supports: 1:1, 16:9, 9:16, 21:9, 9:21, 4:5, 5:4, 3:4, 4:3, 2:3, 3:2
+  const ratio = aspectRatio === 'portrait' ? '9:16'
+    : aspectRatio === 'landscape' ? '16:9'
+    : aspectRatio || '1:1';
   const urls = [];
 
   for (let i = 0; i < count; i++) {
@@ -121,7 +146,7 @@ async function generateReplicate({ prompt, count, apiKey }) {
       },
       body: JSON.stringify({
         version: MODEL_VERSION,
-        input: { prompt, num_outputs: 1, aspect_ratio: '1:1' },
+        input: { prompt, num_outputs: 1, aspect_ratio: ratio },
       }),
     });
     if (!createRes.ok) {
@@ -209,7 +234,7 @@ async function downloadImage(source, dest) {
   const fetch = (await import('node-fetch')).default;
   const res = await fetch(source);
   if (!res.ok) throw new Error(`failed to download image: status ${res.status}`);
-  const buffer = await res.buffer();
+  const buffer = Buffer.from(await res.arrayBuffer());
   fs.writeFileSync(dest, buffer);
 }
 
@@ -233,20 +258,38 @@ function parseArgs(argv) {
 // Main
 // ---------------------------------------------------------------------------
 
-async function generateSlides({ prompt, count = 6, provider: providerArg, outputDir } = {}) {
+function resolveOutDir(outputDir, config) {
+  // Explicit --output-dir wins
+  if (outputDir) {
+    return path.isAbsolute(outputDir)
+      ? path.join(outputDir, 'slides')
+      : path.join(__dirname, '..', outputDir, 'slides');
+  }
+  // Fall back to config default
+  const configDir = config?.defaults?.output_dir;
+  if (configDir) {
+    return path.isAbsolute(configDir)
+      ? path.join(configDir, 'slides')
+      : path.join(__dirname, '..', configDir, 'slides');
+  }
+  // Last resort: project-root output/slides
+  return path.join(__dirname, '..', 'output', 'slides');
+}
+
+async function generateSlides({
+  prompt,
+  count = 6,
+  provider: providerArg,
+  outputDir,
+  size,
+  aspectRatio,
+} = {}) {
   const config = loadConfig();
 
   const provider = providerArg || resolveProvider({}, config);
   const apiKey = resolveApiKey(provider, config);
   const slideCount = Number(count);
-  const outDir = outputDir || config?.defaults?.output_dir
-    ? path.join(
-        path.isAbsolute(config?.defaults?.output_dir ?? './output')
-          ? config.defaults.output_dir
-          : path.join(__dirname, '..', config?.defaults?.output_dir ?? './output'),
-        'slides'
-      )
-    : path.join(__dirname, '..', 'output', 'slides');
+  const outDir = resolveOutDir(outputDir, config);
 
   if (!prompt) throw new Error('prompt is required');
   if (!apiKey) throw new Error(`no api key found for provider: ${provider}`);
@@ -259,7 +302,7 @@ async function generateSlides({ prompt, count = 6, provider: providerArg, output
   }
 
   const generateFn = PROVIDERS[provider];
-  const urls = await generateFn({ prompt, count: slideCount, apiKey });
+  const urls = await generateFn({ prompt, count: slideCount, apiKey, size, aspectRatio });
 
   console.log(`  got ${urls.length} image(s) back. saving...`);
 
@@ -286,7 +329,20 @@ if (isMain) {
   const args = parseArgs(process.argv.slice(2));
 
   if (!args.prompt) {
-    console.error('\nmissing --prompt. example:\n  node generate-slides.js --prompt "fitness motivation" --count 6 --provider openai\n');
+    console.error(
+`
+missing --prompt. example:
+  node generate-slides.js --prompt "fitness motivation" --count 6 --provider openai
+
+flags:
+  --prompt        image generation prompt (required)
+  --count         how many slides (default: 6)
+  --provider      openai | stability | replicate | gemini
+  --output-dir    where to save slides (default: config.defaults.output_dir)
+  --size          explicit dimensions like "1024x1792" (openai/stability only)
+  --aspect-ratio  portrait | landscape | 9:16 | 16:9 | 1:1 (recommended over --size)
+`
+    );
     process.exit(1);
   }
 
@@ -295,6 +351,8 @@ if (isMain) {
     count: args.count ? Number(args.count) : 6,
     provider: args.provider,
     outputDir: args['output-dir'],
+    size: args.size,
+    aspectRatio: args['aspect-ratio'],
   }).catch((err) => {
     console.error(`\nslide gen failed: ${err.message}\n`);
     process.exit(1);

@@ -14,16 +14,15 @@ How to create effective slideshow content (TikTok carousels, Instagram carousels
 | 6 | CTA | What to do next. Follow, save, share, link in bio. | Brand-colored, bold CTA text, arrow pointing to action |
 
 **Text Overlay Best Practices:**
-- Maximum 10-12 words per slide
+- One idea per slide - if you need more words, you need more slides (~10-12 words is the practical ceiling)
 - Font size: minimum 5% of image width
 - White text with black outline for readability on any background
 - Position: top third or center for most platforms
 - Leave margin from edges (at least 10% padding)
-- One idea per slide - if you need more words, you need more slides
 
 **Image Generation Tips:**
 - Consistent style across all 6 slides (same provider, same style prompt suffix)
-- Aspect ratio: 1080x1350 for Instagram/TikTok carousels, 1080x1920 for Stories/Reels
+- Target aspect ratio: 1080x1350 for Instagram/TikTok carousels, 1080x1920 for Stories/Reels. Note: `generate-slides.js` currently outputs 1024x1024 from OpenAI/Stability/Replicate. Either resize after generation or use Gemini for variable sizes.
 - Add style modifiers: "cinematic lighting, professional photography, editorial style"
 - Avoid: text in AI-generated images (add text with overlay script instead)
 - For brand consistency: include color palette in every prompt
@@ -31,6 +30,8 @@ How to create effective slideshow content (TikTok carousels, Instagram carousels
 **Slideshow Workflow:**
 1. Research trending hooks in your niche via Virlo
 2. Write 6 text overlays following the formula
-3. Generate 6 images: `node scripts/generate-slides.js --prompt "[style]" --count 6`
-4. Add text overlays: `node scripts/add-text-overlay.js --batch overlay-config.json`
-5. Post via PostForMe: `node scripts/post-content.js --media ./output/slides-final/ --platforms tiktok,instagram`
+3. Generate 6 images: `node scripts/generate-slides.js --prompt "[style]" --count 6 --output-dir ./output/your-campaign`
+4. Add text overlays: `node scripts/add-text-overlay.js --batch overlay-config.json --outputDir ./output/your-campaign/final`
+5. Upload the final images to a public host (S3, R2, Cloudflare Images), then post via PostForMe:
+   `node scripts/post-content.js --media-urls "https://...,https://...,..." --platforms tiktok,instagram --caption "..." --now`
+   - PostForMe requires public URLs. To pass local file paths instead, set `defaults.media_host_base_url` in `vee-config.json` so vee can build URLs from filenames, then use `--media ./output/your-campaign/final`.

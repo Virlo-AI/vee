@@ -4,13 +4,11 @@ Research one niche once, then generate scripts, social posts, ad copy, briefs, a
 
 **Scenario:** You're an SMMA agency onboarding a new skincare client called GlowLab. You need a full content package for their first month, fast.
 
-**Total research cost:** ~$2.50
-
 ---
 
 ## The principle behind this workflow
 
-Most agencies do the research per deliverable - writing a script, then researching again to write an ad, then researching again for the brief. That's redundant and expensive. One deep research session should power everything.
+Most agencies do the research per deliverable - writing a script, then researching again to write an ad, then researching again for the brief. That's redundant. One deep research session should power everything.
 
 Run the research once. Extract all the patterns. Then route each deliverable to the right template, all informed by the same data.
 
@@ -22,15 +20,13 @@ Run the research once. Extract all the patterns. Then route each deliverable to 
 "Set up a weekly niche monitor for skincare brands on TikTok, Reels, and Shorts. Keywords: skincare routine, glass skin, skin barrier, moisturizer tips. Minimum 10K views."
 ```
 
-Vee states the cost: "niche monitor costs $0.50 to create."
-
 Vee runs `create_niche_monitor`:
 - Keywords: `["skincare routine", "glass skin", "skin barrier", "moisturizer tips"]`
 - Platforms: TikTok, Instagram, YouTube
 - Cadence: weekly
 - Min views: 10,000
 
-This runs on autopilot every week and accumulates data. Everything you create for GlowLab going forward can be informed by fresh niche data without spending another credit.
+This runs on autopilot every week and accumulates data. Everything you create for GlowLab going forward can be informed by fresh niche data.
 
 ---
 
@@ -39,8 +35,6 @@ This runs on autopilot every week and accumulates data. Everything you create fo
 ```
 "Also run a one-time deep search on skincare content from this month"
 ```
-
-Vee states the cost: "$0.50 for the keyword search."
 
 Vee runs `search_keywords`:
 - Same keyword set
@@ -55,15 +49,11 @@ Vee runs `search_keywords`:
 "Look up these three competitor accounts: @dermaflux on TikTok, @clearskinstudio on Instagram, @labskincare on TikTok"
 ```
 
-Vee states the cost: "3 creator lookups at $0.50 each - that's $1.50 total."
-
 Vee runs `batch_lookup_creators` for all three simultaneously:
 - Full profiles with follower counts and engagement averages
 - Recent video history with per-video performance
 - Outlier analysis - which of their videos outperformed their own average, and by how much
 - Posting cadence per account
-
-**Total research cost so far: $2.50**
 
 ---
 
@@ -73,7 +63,7 @@ Vee runs `batch_lookup_creators` for all three simultaneously:
 "Analyze everything. What hooks are working, what formats are winning, when are the top performers posting?"
 ```
 
-Vee pulls from the completed searches and lookups (all free reads) and synthesizes:
+Vee pulls from the completed searches and lookups and synthesizes:
 
 **Hook patterns (from outlier analysis):**
 - Before/after hooks dominate - used in 6 of the top 10 outlier videos
@@ -162,4 +152,4 @@ After one research session:
 - 1 4-week content calendar with timing and topics
 - 1 client-facing competitive intelligence report
 
-All built from the same $2.50 of research. The niche monitor keeps running weekly, so month 2's content package costs $0.50 to refresh - not another full research session.
+All built from the same research session. The niche monitor keeps running weekly, so month 2's content package only needs a quick refresh - not another full research session.

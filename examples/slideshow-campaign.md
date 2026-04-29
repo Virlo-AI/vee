@@ -6,8 +6,6 @@ End-to-end walkthrough - research, generate slides, add overlays, post, track, a
 
 **Time required:** 20-30 minutes to run through. 7 days of passive tracking after.
 
-**Total Virlo cost for this campaign:** ~$2.00
-
 ---
 
 ## Step 1: Research what's already working
@@ -15,8 +13,6 @@ End-to-end walkthrough - research, generate slides, add overlays, post, track, a
 ```
 "Hey Vee, research trending supplement content on TikTok and Reels from the last 7 days"
 ```
-
-Vee states the cost: "keyword search costs $0.50 - running it now."
 
 Vee runs `search_keywords`:
 - Keywords: `["supplements", "protein", "fitness nutrition", "protein powder"]`
@@ -39,7 +35,7 @@ Wait 30-55 seconds for the job to complete.
 "What hooks and formats are the outliers using?"
 ```
 
-Vee runs `get_keyword_search_results` (free) to pull the outlier analysis from the completed search.
+Vee runs `get_keyword_search_results` to pull the outlier analysis from the completed search.
 
 **Example findings:**
 - Slideshow carousels are outperforming talking-head videos 3:1 in this niche this week
@@ -80,20 +76,20 @@ Vee runs the image generation script:
 node scripts/generate-slides.js \
   --prompt "dark moody fitness aesthetic, cinematic lighting, supplement photography" \
   --count 6 \
-  --output ./output/novapeak-protein-timing/
+  --output-dir ./output/novapeak-protein-timing
 ```
 
-This generates 6 base images using your configured image generation provider (DALL-E 3, Flux, Stability AI, or Gemini - set during `node scripts/setup.js`).
+This generates 6 base images using your configured image generation provider (DALL-E 3, Flux, Stability AI, or Gemini - set during `node scripts/setup.js`). The script outputs to a `slides/` subfolder under the path you pass.
 
-Then applies text overlays:
+Then applies text overlays. The overlay script accepts a batch JSON file (one entry per slide) describing which file gets which text:
 
 ```bash
 node scripts/add-text-overlay.js \
-  --config ./output/novapeak-protein-timing/overlay-config.json \
-  --output ./output/novapeak-protein-timing/final/
+  --batch ./output/novapeak-protein-timing/overlay-config.json \
+  --outputDir ./output/novapeak-protein-timing/final
 ```
 
-Output: 6 finished slide images in `./output/novapeak-protein-timing/final/`, sized to platform specs (1080x1350 for Instagram, 1080x1920 for TikTok vertical carousel).
+Output: 6 finished slide images in `./output/novapeak-protein-timing/final/`, sized to whatever the source images came in at. (Note: the generator returns 1024x1024 from OpenAI/Stability/Replicate. If you need true platform dimensions like 1080x1350 for Instagram or 1080x1920 for TikTok, run them through a resize step or pass an `--aspect-ratio` flag once that's added to the generator.)
 
 ---
 
@@ -103,15 +99,17 @@ Output: 6 finished slide images in `./output/novapeak-protein-timing/final/`, si
 "Post this slideshow to TikTok and Instagram right now"
 ```
 
-Vee runs:
+Vee runs (after uploading the 6 final images to a public host - S3, R2, Cloudflare Images, etc.):
 
 ```bash
 node scripts/post-content.js \
-  --media ./output/novapeak-protein-timing/final/ \
+  --media-urls "https://cdn.example.com/protein-1.jpg,https://cdn.example.com/protein-2.jpg,https://cdn.example.com/protein-3.jpg,https://cdn.example.com/protein-4.jpg,https://cdn.example.com/protein-5.jpg,https://cdn.example.com/protein-6.jpg" \
   --platforms tiktok,instagram \
   --caption "you're wasting your protein powder. here's what actually matters 👇" \
   --now
 ```
+
+PostForMe requires public URLs for media (no base64 or local files). If you set `defaults.media_host_base_url` in `vee-config.json`, you can also pass `--media ./output/novapeak-protein-timing/final` and Vee will build URLs from the filenames.
 
 Both posts go live via PostForMe. Vee confirms with the post URLs once live.
 
@@ -121,7 +119,7 @@ Both posts go live via PostForMe. Vee confirms with the post URLs once live.
 "Schedule this for the best time in my niche"
 ```
 
-Vee checks `get_posting_cadence` data from tracked creators in the supplement niche (free if already tracking), identifies the highest-performing windows, and passes `--optimal` to the post script.
+Vee runs `get_posting_cadence` for tracked creators in the supplement niche, identifies the highest-performing windows, and passes `--optimal` to the post script. `--optimal` requires exactly one platform per call - run it twice if you want different optimal times for TikTok and Instagram.
 
 ---
 
@@ -130,8 +128,6 @@ Vee checks `get_posting_cadence` data from tracked creators in the supplement ni
 ```
 "Track both videos for 7 days"
 ```
-
-Vee states the cost: "tracking costs $0.25 per video per cycle - that's $0.50/day for both, $3.50 over 7 days."
 
 Vee runs `track_video` for both the TikTok and Instagram post URLs:
 - Scrape cadence: daily
@@ -145,7 +141,7 @@ Vee runs `track_video` for both the TikTok and Instagram post URLs:
 "How did the slideshow perform? What should I try differently?"
 ```
 
-Vee runs `get_tracking_report` for both videos (free reads) and compares against niche benchmarks from your active niche monitor.
+Vee runs `get_tracking_report` for both videos and compares against niche benchmarks from your active niche monitor.
 
 **Example output:**
 - TikTok: 120K views (above niche median of 40K - performing well)

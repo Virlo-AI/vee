@@ -4,8 +4,8 @@ PostForMe handles multi-platform posting, scheduling, and analytics for Vee.
 
 **Base URL:** `https://api.postforme.dev`
 **Auth:** Bearer token in Authorization header
-**Docs:** [postforme.dev/developers](https://postforme.dev/developers)
-**Full API docs:** [api.postforme.dev/docs](https://api.postforme.dev/docs)
+**Developer portal:** [www.postforme.dev/developers](https://www.postforme.dev/developers) (sign up + dashboard)
+**API reference:** [api.postforme.dev/docs](https://api.postforme.dev/docs) (Scalar interactive docs)
 
 **Supported Platforms (9):**
 TikTok, Instagram, Facebook, X (Twitter), LinkedIn, YouTube, Threads, Pinterest, Bluesky
@@ -26,7 +26,7 @@ TikTok, Instagram, Facebook, X (Twitter), LinkedIn, YouTube, Threads, Pinterest,
 ```json
 {
   "caption": "your post caption here",
-  "social_accounts": ["tiktok_account_id", "instagram_account_id"],
+  "social_accounts": ["sa_1234abc", "sa_5678def"],
   "media": [
     {
       "url": "https://example.com/image.jpg"
@@ -34,6 +34,10 @@ TikTok, Instagram, Facebook, X (Twitter), LinkedIn, YouTube, Threads, Pinterest,
   ]
 }
 ```
+
+`social_accounts` takes account ID strings (format `sa_<id>`), NOT platform names. Find your IDs in the PostForMe dashboard under Connected Accounts. Vee resolves platform names to IDs from `config.postforme.social_accounts` so you can pass `--platforms tiktok,instagram` and Vee handles the mapping.
+
+`media` requires public URLs - PostForMe does not accept base64 or local files. Pre-upload to S3, R2, Cloudflare Images, or any host that serves public URLs, then pass the URL.
 
 **Scheduling:**
 Add `scheduled_at` field with ISO 8601 datetime:

@@ -191,4 +191,4 @@ The most effective copy layers 2-3 frameworks simultaneously. PAS sets the struc
 
 Frameworks without voice produce nothing. Voice without frameworks produces wandering copy that never converts. The combination is where good copy lives.
 
-When Vee generates copy, she's running these frameworks in the background - not reciting them. The goal is always copy that sounds like it came from a sharp human who happened to know what they were doing, not from a checklist.
+When Vee generates copy, he's running these frameworks in the background - not reciting them. The goal is always copy that sounds like it came from a sharp human who happened to know what they were doing, not from a checklist.
