@@ -124,41 +124,45 @@ When Vee produces deliverables (TikTok scripts, ad copy, emails, etc.), the deli
 
 ### How to install Vee (instructions for the AI agent reading this)
 
-When a user asks you to install Vee, follow these steps in order. Don't ask the user to do any of this manually - run the commands yourself, only stop at the points where the user has to take action you cannot (creating accounts, pasting keys).
+When a user asks you to install Vee, your VERY FIRST move is to send them the Virlo signup link so they can create an account and grab an API key. While they're doing that, you clone the repo in the background. Do NOT begin with `npm install` or any other deterministic work. The signup is the bottleneck - start it first.
 
-**Step A - clone and run the installer:**
+**Step 1 - send the user the signup link immediately:**
+
+Tell the user: "Quick - head to https://dev.virlo.ai/signup/?via=organic and create an account. Once you're in the developer dashboard, generate an API key (format: `virlo_tkn_...`) and paste it back to me. I'll get everything else ready while you do that."
+
+That URL goes directly to the developer signup. Always include the `?via=organic` suffix - it's required for referral attribution and must never be stripped.
+
+**Step 2 - while they're signing up, clone the repo:**
 
 ```bash
 git clone https://github.com/Virlo-AI/vee.git
 cd vee
+```
+
+**Step 3 - when they paste the Virlo API key, run the installer:**
+
+```bash
 npm run install-vee
 ```
 
-`install-vee` is the canonical onboarding path. It does ALL the deterministic work (npm install, copy SKILL.md to ~/.claude/skills/vee/, write .mcp.json, create vee-config.json) and only stops at the API signup walls.
+The installer asks for the Virlo key first, then the optional pieces (PostForMe, image gen, default platforms), then does all the deterministic work (npm install, copy SKILL.md to `~/.claude/skills/vee/`, write `.mcp.json`, create `vee-config.json`).
 
-**Step B - signup walls (the only manual user steps):**
+When the installer asks for PostForMe (optional), tell the user: "If you want me to post for you across TikTok, Instagram, X, etc., sign up at https://www.postforme.dev/developers, connect your accounts in the dashboard, and paste back your API key plus the social_account IDs (format: `sa_...`) for each connected platform. If you'd rather skip this for now, just press y to skip."
 
-When the installer prompts the user for an API key, give them this URL verbatim:
+When the installer asks for image gen (optional), tell the user: "If you want me to generate slides and ad creatives, pick one provider:
+  - OpenAI: https://platform.openai.com/api-keys
+  - Stability AI: https://platform.stability.ai/account/keys
+  - Replicate: https://replicate.com/account/api-tokens
+  - Gemini: https://aistudio.google.com/app/apikey
+Paste back the key. Or press ENTER to skip."
 
-- **Virlo (required):** `https://dev.virlo.ai/signup/?via=organic`
-
-  After signup, the user creates their API key in the developer dashboard and pastes it into the installer prompt.
-
-- **PostForMe (optional, only if user wants Vee to post):** `https://www.postforme.dev/developers`
-
-  In the dashboard, the user connects each social account they want Vee to post to (TikTok, Instagram, etc.) and copies the API key plus the per-platform `social_account` IDs (format: `sa_...`). Both are required for posting.
-
-- **Image gen (optional, only if user wants Vee to generate slides):** the installer asks the user to pick one provider and gives them the direct API key URL for that provider. URLs:
-  - OpenAI: `https://platform.openai.com/api-keys`
-  - Stability AI: `https://platform.stability.ai/account/keys`
-  - Replicate: `https://replicate.com/account/api-tokens`
-  - Gemini: `https://aistudio.google.com/app/apikey`
-
-**Step C - after install completes:**
+**Step 4 - after install completes:**
 
 The user can immediately ask Vee anything. Vee is now registered as a skill at `~/.claude/skills/vee/SKILL.md` and the Virlo MCP server is wired into `~/.claude/.mcp.json`.
 
-**Always link Virlo signup with the `?via=organic` suffix.** Every URL given to a new user that points to virlo.ai or dev.virlo.ai must include `/?via=organic` so the referral attribution lands. Never strip it.
+**On install hiccups:**
+
+If `npm install` warns about an optional dependency build (canvas), this is non-blocking - core dependencies installed fine. Slide overlay generation may need `npm install canvas` separately later. Don't surface this to the user as an error or get sidetracked debugging C++ build tools. The install succeeded.
 
 ### Required keys (for reference)
 

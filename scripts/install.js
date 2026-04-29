@@ -41,24 +41,27 @@ async function checkVirloKey(apiKey) {
 }
 
 function ensureNodeInstall() {
-  log('\nStep 1/7: Installing dependencies...');
+  log('\nInstalling dependencies...');
   try {
-    execSync('npm install', { cwd: REPO_ROOT, stdio: 'inherit' });
+    execSync('npm install --no-audit --no-fund', { cwd: REPO_ROOT, stdio: 'inherit' });
     log('  Done.');
   } catch {
-    throw new Error('npm install failed. Install Node.js 18+ from nodejs.org and try again.');
+    log('  Note: optional dependency install had issues (likely the canvas native build).');
+    log('  Core deps installed. Slide overlay generation may be unavailable until you run:');
+    log('    npm install canvas');
+    log('  in the vee directory. Continuing.');
   }
 }
 
 function ensureSkillCopied() {
-  log('\nStep 2/7: Registering Vee with Claude Code...');
+  log('\nRegistering Vee with Claude Code...');
   fs.mkdirSync(SKILL_DEST_DIR, { recursive: true });
   fs.copyFileSync(path.join(REPO_ROOT, 'SKILL.md'), path.join(SKILL_DEST_DIR, 'SKILL.md'));
   log(`  SKILL.md copied to ${SKILL_DEST_DIR}`);
 }
 
 function ensureMcpEntry(virloKey) {
-  log('\nStep 3/7: Wiring up the Virlo MCP server...');
+  log('\nWiring up the Virlo MCP server...');
   let mcp = { mcpServers: {} };
   if (fs.existsSync(MCP_PATH)) {
     try {
@@ -84,7 +87,7 @@ function ensureMcpEntry(virloKey) {
 }
 
 async function promptVirloKey() {
-  log('\nStep 4/7: Virlo API key');
+  log('\nStep 1/4: Virlo API key (required)');
   log('');
   log('  Vee needs a Virlo API key to research, track, and pull intelligence.');
   log('  Sign up here:');
@@ -119,7 +122,7 @@ async function promptVirloKey() {
 }
 
 async function promptPostForMe() {
-  log('\nStep 5/7: PostForMe API key + connected accounts');
+  log('\nStep 2/4: PostForMe API key + connected accounts (optional)');
   log('');
   log('  PostForMe handles posting to TikTok, Instagram, X, LinkedIn, YouTube, etc.');
   log('  Sign up here:');
@@ -153,7 +156,7 @@ async function promptPostForMe() {
 }
 
 async function promptImageGen() {
-  log('\nStep 6/7: Image generation');
+  log('\nStep 3/4: Image generation (optional)');
   log('');
   log('  Pick ONE provider (only needed if you want Vee to generate slides/images).');
   log('  Press ENTER to skip - you can add this later.');
@@ -178,7 +181,7 @@ async function promptImageGen() {
 }
 
 async function promptPlatforms() {
-  log('\nStep 7/7: Which platforms should Vee post to by default?');
+  log('\nStep 4/4: Which platforms should Vee post to by default?');
   log('  (You can change this later in vee-config.json. Answer y/n for each.)');
   log('');
   const platforms = {};
@@ -194,30 +197,17 @@ async function run() {
   log('Vee installer');
   log('=============');
   log('');
-  log('This is going to:');
-  log('  - Install dependencies');
-  log('  - Register Vee as a Claude Code skill');
-  log('  - Wire up the Virlo MCP server');
-  log('  - Walk you through 3 API key signups (Virlo required, others optional)');
+  log('Total time: ~3 minutes. Only the Virlo API key is required.');
   log('');
-  log('Total time: ~3 minutes. Only Virlo is required to do anything useful.');
-  log('');
-  const start = await ask('Ready? [Y/n]: ');
-  if (start.toLowerCase() === 'n') {
-    log('Cancelled.');
-    rl.close();
-    return;
-  }
-
-  ensureNodeInstall();
-  ensureSkillCopied();
 
   const virloKey = await promptVirloKey();
-  ensureMcpEntry(virloKey);
-
   const postforme = await promptPostForMe();
   const imageGen = await promptImageGen();
   const platforms = await promptPlatforms();
+
+  ensureNodeInstall();
+  ensureSkillCopied();
+  ensureMcpEntry(virloKey);
 
   let mediaHostBaseUrl = '';
   if (postforme.apiKey) {

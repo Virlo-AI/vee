@@ -14,9 +14,11 @@
     "report": "node scripts/daily-report.js"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
     "dotenv": "^16.4.5",
     "node-fetch": "^3.3.2"
+  },
+  "optionalDependencies": {
+    "canvas": "^3.0.0"
   },
   "keywords": [
     "virlo",

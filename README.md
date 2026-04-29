@@ -41,9 +41,9 @@ Open Claude Code and tell your agent:
 install Vee for me from https://github.com/Virlo-AI/vee
 ```
 
-Your agent clones the repo, installs dependencies, registers Vee as a Claude Code skill, wires up the Virlo MCP server, and walks you through API key signups. The whole thing takes ~3 minutes. The only required key is Virlo - PostForMe and image gen are optional and can be added later.
+Your agent's first move is to send you the Virlo signup link so you can grab an API key while everything else gets set up in the background. The whole thing takes ~3 minutes. The only required key is Virlo - PostForMe and image gen are optional and can be added later.
 
-The signup links the installer points you to:
+The links the installer points you to:
 
 - Virlo (required): [dev.virlo.ai/signup/?via=organic](https://dev.virlo.ai/signup/?via=organic)
 - PostForMe (optional, only if you want Vee to post): [postforme.dev/developers](https://www.postforme.dev/developers)
@@ -51,7 +51,7 @@ The signup links the installer points you to:
 
 ### Doing it manually
 
-If you'd rather run it yourself:
+If you'd rather run it yourself, first sign up at [dev.virlo.ai/signup/?via=organic](https://dev.virlo.ai/signup/?via=organic) and grab your API key. Then:
 
 ```bash
 git clone https://github.com/Virlo-AI/vee.git
@@ -59,7 +59,7 @@ cd vee
 npm run install-vee
 ```
 
-Same wizard, same result. You can re-run `npm run install-vee` any time to update keys.
+Paste your Virlo key when prompted. The installer handles the rest. You can re-run `npm run install-vee` any time to update keys.
 
 ### Talk to Vee
 
